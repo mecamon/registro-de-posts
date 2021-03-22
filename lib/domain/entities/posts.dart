@@ -1,6 +1,5 @@
 import 'package:meta/meta.dart';
 
-
 class Posts {
   @required final int id;
   @required final int userId;

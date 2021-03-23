@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:registro_de_posts/utils/constants.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:registro_de_posts/bloc/complete_info_bloc.dart';
+import 'package:registro_de_posts/data/models/complete_info_model.dart';
+import 'package:registro_de_posts/presentation/widgets/mini_post.dart';
 
 class Data extends StatefulWidget {
   Data({Key key}) : super(key: key);
@@ -55,66 +58,34 @@ class _DataState extends State<Data> {
                     color: Colors.brown[900],
                     width: double.infinity,
                     height: double.infinity,
-                    child: ListView(
-                      padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
-                      children: [
-                        MiniPost(postAutor: 'Random autor', postBody: 'Random body'),
-                        MiniPost(postAutor: 'Random autor', postBody: 'Random body'),
-                      ],
+                    child: BlocBuilder<CompleteInfoBloc, CompleteInfoState>(
+                      builder: (context, state) {
+                        return ListView(
+                            padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
+                            children: createMiniPosts(state.completeInfoList));
+                      },
                     ),
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
     );
   }
-}
 
-class MiniPost extends StatelessWidget {
-  final String postAutor;
-  final String postBody;
+  List<MiniPost> createMiniPosts(List<CompleteInfoModel> completes) {
+    final List<MiniPost> allPost = [];
 
-  const MiniPost({
-    this.postAutor,
-    this.postBody,
-    Key key,
-  }) : super(key: key);
+    for (CompleteInfoModel complete in completes) {
+      allPost.add(MiniPost(
+        completeInfo: complete,
+      ));
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 75,
-      // color: Colors.blue,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Row(
-              children: [
-                Text('Autor del post: ', style: kMiniPostTextHead),
-                Text(postAutor, style: kMiniPostBodyHead),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Row(
-              children: [
-                Text('Título: ', style: kMiniPostTextHead),
-                Text(postBody, style: kMiniPostBodyHead),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Container(height: 1.5, color: Colors.white),
-          )
-        ],
-      ),
-    );
+      print(complete);
+    }
+
+    return allPost;
   }
 }

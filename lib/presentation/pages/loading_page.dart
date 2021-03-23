@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:registro_de_posts/bloc/complete_info_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -12,22 +13,18 @@ class LoadingPage extends StatefulWidget {
 
 class _LoadingPageState extends State<LoadingPage> {
   final client = http.Client();
-  final bloc = CompleteInfoBloc();
 
   @override
   void initState() {
     
     //Generating the models from the event call
-    bloc.add(CompleteInfoEvent.GENERATE_MODELS);
+    BlocProvider.of<CompleteInfoBloc>(context)
+      .add(CompleteInfoEvent.GENERATE_MODELS);
 
-    //Listening the value to change the page when it is loaded
-    bloc.stream.listen((state) { 
-      // print(state.completeInfoList);
-
+    BlocProvider.of<CompleteInfoBloc>(context).stream.listen((state) { 
       if(state.completeInfoList.length > 0) {
         Navigator.pushNamed(context, '/data');
       }
-      
     });
 
     super.initState();

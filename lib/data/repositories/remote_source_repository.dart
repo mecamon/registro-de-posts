@@ -11,7 +11,7 @@ class RemoteSourceRepository {
     return await remoteDataSource.getAllPosts();
   }
 
-  Future<List<UserModel>> getAllusers() async {
+  Future<List<UserModel>> getAllUsers() async {
     return await remoteDataSource.getAllUsers();
   }
 

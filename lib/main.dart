@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:registro_de_posts/pages/data_page.dart';
 import 'package:registro_de_posts/pages/loading_page.dart';
 
 void main() {
@@ -12,7 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      home: LoadingPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoadingPage(),
+        '/data': (context) => Data(),
+      },
     );
   }
 }

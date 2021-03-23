@@ -27,4 +27,5 @@ class CompleteInfoModel extends CompleteInfo {
     title: title,
     body: body
   );
+  
 }

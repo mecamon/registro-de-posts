@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-class CompleteInfo {
+class CompleteInfo extends Equatable {
   @required final int userId;
   @required final int postId;
   @required final String name;
@@ -18,4 +19,15 @@ class CompleteInfo {
     this.title,
     this.body
   });
+
+  @override
+  List<Object> get props => [
+    userId, 
+    postId, 
+    name, 
+    username, 
+    email, 
+    title, 
+    body
+  ];
 }

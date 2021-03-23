@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:registro_de_posts/pages/data_page.dart';
-import 'package:registro_de_posts/pages/loading_page.dart';
+import 'package:registro_de_posts/presentation/pages/data_page.dart';
+import 'package:registro_de_posts/presentation/pages/loading_page.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.dark(),
+      theme: ThemeData.light(),
       initialRoute: '/',
       routes: {
         '/': (context) => LoadingPage(),

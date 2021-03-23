@@ -48,7 +48,7 @@ class _LoadingPageState extends State<LoadingPage> {
               ),
             ),
             SpinKitDoubleBounce(
-              color: Colors.white,
+              color: Colors.black26,
               size: 100,
             ),
           ],

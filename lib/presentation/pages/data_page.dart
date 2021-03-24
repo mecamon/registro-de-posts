@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registro_de_posts/bloc/complete_info_bloc.dart';
 import 'package:registro_de_posts/data/models/complete_info_model.dart';
 import 'package:registro_de_posts/presentation/widgets/mini_post.dart';
+import 'package:registro_de_posts/presentation/widgets/title_bar.dart';
 
 class Data extends StatefulWidget {
   Data({Key key}) : super(key: key);
@@ -20,30 +21,7 @@ class _DataState extends State<Data> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16.0),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: Icon(
-                        Icons.note_rounded,
-                        size: 40,
-                        color: Colors.brown[900],
-                      ),
-                    ),
-                    Text(
-                      'Registro de posts',
-                      style: TextStyle(fontSize: 20, color: Colors.brown[900]),
-                    )
-                  ],
-                ),
-              ),
-              color: Colors.green[500],
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height * 0.10,
-            ),
+            TitleBar(title: 'Registro de posts'),
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: Text(
@@ -89,3 +67,5 @@ class _DataState extends State<Data> {
     return allPost;
   }
 }
+
+

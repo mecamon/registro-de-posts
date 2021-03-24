@@ -26,5 +26,5 @@ const kPostBodyHead = TextStyle(
 
 const kTitleTextStyle = TextStyle(
   fontSize: 20, 
-  color: Colors.black87
+  color: Colors.white
 );

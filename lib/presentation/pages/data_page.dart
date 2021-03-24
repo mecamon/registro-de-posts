@@ -16,16 +16,19 @@ class _DataState extends State<Data> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[50],
+      backgroundColor: Colors.grey,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TitleBar(title: 'Registro de posts'),
             Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+              padding: const EdgeInsets.only(top: 10.0),
               child: Text(
-                  'Presione sobre algún post para obtener información completa'),
+                'Presione sobre algún post para obtener información completa',
+                textAlign: TextAlign.center,
+              ),
             ),
             Expanded(
               child: Padding(
@@ -33,14 +36,19 @@ class _DataState extends State<Data> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Container(
-                    color: Colors.brown[900],
+                    color: Colors.black87,
                     width: double.infinity,
                     height: double.infinity,
                     child: BlocBuilder<CompleteInfoBloc, CompleteInfoState>(
                       builder: (context, state) {
-                        return ListView(
-                            padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
-                            children: createMiniPosts(state.completeInfoList));
+                        return Scrollbar(
+                          isAlwaysShown: true,
+                          thickness: 50,
+                          child: ListView(
+                              padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
+                              children:
+                                  createMiniPosts(state.completeInfoList)),
+                        );
                       },
                     ),
                   ),
@@ -67,5 +75,3 @@ class _DataState extends State<Data> {
     return allPost;
   }
 }
-
-

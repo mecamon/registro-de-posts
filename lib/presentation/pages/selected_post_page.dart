@@ -27,7 +27,7 @@ class _SelectedPostState extends State<SelectedPost> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Container(
-                    color: Colors.brown[900],
+                    color: Colors.black87,
                     width: double.infinity,
                     height: double.infinity,
                     child: Padding(

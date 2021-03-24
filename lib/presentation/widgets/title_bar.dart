@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:registro_de_posts/utils/constants.dart';
 
 class TitleBar extends StatelessWidget {
 
@@ -11,29 +12,35 @@ class TitleBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 16.0),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Icon(
-                Icons.note_rounded,
-                size: 40,
-                color: Colors.brown[900],
-              ),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+              child: Container(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Icon(
+                    Icons.note_rounded,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  title,
+                  style: kTitleTextStyle,
+                )
+              ],
             ),
-            Text(
-              title,
-              style: TextStyle(fontSize: 20, color: Colors.brown[900]),
-            )
-          ],
+          ),
+          color: Colors.black87,
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height * 0.10,
         ),
       ),
-      color: Colors.green[500],
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.10,
     );
   }
 }

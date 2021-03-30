@@ -15,35 +15,37 @@ class SelectedPost extends StatefulWidget {
 class _SelectedPostState extends State<SelectedPost> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-            TitleBar(title: 'Selected post'),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    color: Colors.black87,
-                    width: double.infinity,
-                    height: double.infinity,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children:
-                            generateSelectedPostInfo(widget.postFromDataPage),
-                      ),
+    return Scaffold(
+      appBar: AppBar(
+        title: TitleBar(title: 'Selected post'),
+        backgroundColor: Colors.black45,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TitleBar(title: 'Selected post'),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  color: Colors.black87,
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children:
+                          generateSelectedPostInfo(widget.postFromDataPage),
                     ),
                   ),
                 ),
               ),
             ),
-          ]),
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -62,14 +64,17 @@ class _SelectedPostState extends State<SelectedPost> {
 
   Expanded linesOfInfoFactory(String label, String content) {
     return Expanded(
-      child: Row(
-        children: [
-          Text(
-            '$label: ',
-            style: kPostTextHead,
-          ),
-          Text(content, style: kPostBodyHead),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: Row(
+          children: [
+            Text(
+              '$label: ',
+              style: kPostTextHead,
+            ),
+            Text(content, style: kPostBodyHead),
+          ],
+        ),
       ),
     );
   }
@@ -77,15 +82,18 @@ class _SelectedPostState extends State<SelectedPost> {
   Expanded columnOfInfo(String label, String content, flexNumber) {
     return Expanded(
       flex: flexNumber,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '$label: ',
-            style: kPostTextHead,
-          ),
-          Text(content, style: kPostBodyHead),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '$label: ',
+              style: kPostTextHead,
+            ),
+            Text(content, style: kPostBodyHead),
+          ],
+        ),
       ),
     );
   }

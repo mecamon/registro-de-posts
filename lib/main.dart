@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registro_de_posts/presentation/pages/data_page.dart';
-import 'package:registro_de_posts/presentation/pages/loading_page.dart';
 import 'package:registro_de_posts/presentation/pages/selected_post_page.dart';
 
 import 'bloc/complete_info_bloc.dart';
@@ -24,10 +23,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => BlocProvider.value(
-          value: bloc,
-          child: LoadingPage()
-        ),
-        '/data': (context) => BlocProvider.value(
           value: bloc,
           child: Data()
         ),

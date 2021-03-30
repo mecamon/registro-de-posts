@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:registro_de_posts/bloc/complete_info_bloc.dart';
 import 'package:registro_de_posts/data/models/complete_info_model.dart';
+import 'package:registro_de_posts/presentation/widgets/loading_widget.dart';
 import 'package:registro_de_posts/presentation/widgets/mini_post.dart';
 import 'package:registro_de_posts/presentation/widgets/title_bar.dart';
 
@@ -13,16 +14,30 @@ class Data extends StatefulWidget {
 }
 
 class _DataState extends State<Data> {
+
+
+  @override
+  void initState() {
+    
+    BlocProvider.of<CompleteInfoBloc>(context)
+      .add(CompleteInfoEvent.GENERATE_MODELS);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: TitleBar(title: 'Registro de posts'),
+        backgroundColor: Colors.black45,
+      ),
       backgroundColor: Colors.grey,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TitleBar(title: 'Registro de posts'),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
               child: Text(
@@ -44,10 +59,12 @@ class _DataState extends State<Data> {
                         return Scrollbar(
                           isAlwaysShown: true,
                           thickness: 50,
-                          child: ListView(
-                              padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
-                              children:
-                                  createMiniPosts(state.completeInfoList)),
+                          child: state.completeInfoList.length == 0
+                              ? LoadingWidget()
+                              : ListView(
+                                  padding: EdgeInsets.fromLTRB(15, 15, 15, 15),
+                                  children:
+                                      createMiniPosts(state.completeInfoList)),
                         );
                       },
                     ),

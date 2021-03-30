@@ -13,7 +13,7 @@ class MiniPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
       // color: Colors.blue,
       child: GestureDetector(
         onTap: () {
